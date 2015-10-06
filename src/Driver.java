@@ -1,39 +1,24 @@
 import matrix.Matrix;
 import matrix.SquareMatrix;
+import matrix.Vector;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		SquareMatrix m1 = new SquareMatrix(3);
-		//Matrix m2 = Matrix.getIdentityMatrix(5);
-		/*
-		for(int x = 0; x < m1.getRow(); x++) {
-			for(int y = 0; y < m1.getCol(); y++) {
-				m1.setValueAt(x, y, Math.floor(Math.random()*10));
-			}
-		}*/
+		Vector v = new Vector(3);
+		Vector newCoordinate = new Vector(v.getRow());
 		
-		m1.setValueAt(0, 0, 4);
-		m1.setValueAt(0, 1, 1);
-		m1.setValueAt(0, 2, 5);
-		m1.setValueAt(1, 0, 2);
-		m1.setValueAt(1, 1, 7);
-		m1.setValueAt(1, 2, 2);
-		m1.setValueAt(2, 0, 3);
-		m1.setValueAt(2, 1, 2);
-		m1.setValueAt(2, 2, 7);
-		
-		Matrix.printMatrix(m1);
-		System.out.println("================================================");
-		//Matrix.printMatrix(m2);
-		//System.out.println("================================================");
-		
-		try {
-			Matrix.printMatrix(m1.getInverse());
-		} catch(Exception ex) {
-			ex.printStackTrace();
+		for(int i = 0; i < v.getRow(); i++) {
+			v.setValueAt(i, Math.pow(-1, Math.floor(Math.random() * 10)) * Math.random()*10);
+			newCoordinate.setValueAt(i, Math.pow(-1, Math.floor(Math.random() * 10)) * Math.random()*10);
 		}
-
+		
+		Matrix.printMatrix(v);
+		System.out.println("==============================");
+		Matrix.printMatrix(newCoordinate);
+		System.out.println("==============================");
+		v.translateMatrix(newCoordinate);
+		Matrix.printMatrix(v);
 	}
 
 }

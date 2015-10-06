@@ -26,7 +26,7 @@ public class Matrix {
 	}
 	
 	public void setValueAt(int x, int y, double val) throws IndexOutOfBoundsException {
-		this.matrix[x][y] = val;
+		this.matrix[x][y] = Math.round(val * 100.0) / 100.0;
 	}
 	
 	public static void printMatrix(Matrix m) {
@@ -243,16 +243,6 @@ public class Matrix {
 			if(rowC != 1.0) {
 				tempM.multiplyRow(1/rowC, x);
 				tempB.multiplyRow(1/rowC, x);
-				
-				//handling of 0.9 repeating == 1
-				//x = 0.9999
-				//10x = 9.9999999
-				//9x = 9.99999 - x
-				//9x = 9.99999 - 0.99999
-				//9x = 9
-				//x = 1
-				if(tempM.getValueAt(x, col) == 0.9999999999999999)
-					tempM.setValueAt(x, col, 1);
 			}
 			
 			for(int y = x + 1; y < m.getRow(); y++) {
@@ -297,4 +287,5 @@ public class Matrix {
 		
 		return ret;
 	}
+	
 }

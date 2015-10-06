@@ -45,4 +45,30 @@ public class Vector extends Matrix {
 			return true;
 		return false;
 	}
+	
+	//Given a distance, this vertex will be translated to that distance
+	public void translateMatrix(Vector distances) {
+		Vector extended = new Vector(distances.getRow()+1);
+		Matrix multiplicand = Matrix.getIdentityMatrix(distances.getRow()+1);
+		
+		for(int i = 0; i < this.getRow(); i++) {
+			extended.setValueAt(i, this.getValueAt(i));
+		}
+		extended.setValueAt(this.getRow(), 1);
+		
+		for(int i = 0; i < multiplicand.getRow() - 1; i++) {
+			multiplicand.setValueAt(i, multiplicand.getCol()-1, distances.getValueAt(i));
+		}
+		
+		Matrix result; 
+		try {
+			result = Matrix.multiplyMatrices(multiplicand, extended);
+			for(int i = 0; i < this.getRow(); i++) {
+				this.setValueAt(i, result.getValueAt(i, 0));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
