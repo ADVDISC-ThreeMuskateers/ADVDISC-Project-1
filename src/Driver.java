@@ -1,4 +1,4 @@
-import model.Matrix;
+import matrix.Matrix;
 
 public class Driver {
 

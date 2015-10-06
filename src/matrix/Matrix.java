@@ -1,4 +1,4 @@
-package model;
+package matrix;
 
 import exception.UnequalDimensionsException;
 
@@ -228,6 +228,16 @@ public class Matrix {
 			if(rowC != 1.0) {
 				tempM.multiplyRow(1/rowC, x);
 				tempB.multiplyRow(1/rowC, x);
+				
+				//handling of 0.9 repeating == 1
+				//x = 0.9999
+				//10x = 9.9999999
+				//9x = 9.99999 - x
+				//9x = 9.99999 - 0.99999
+				//9x = 9
+				//x = 1
+				if(tempM.getValueAt(x, col) == 0.9999999999999999)
+					tempM.setValueAt(x, col, 1);
 			}
 			
 			for(int y = x + 1; y < m.getRow(); y++) {
@@ -241,7 +251,21 @@ public class Matrix {
 			
 			System.out.println("===============================================");
 			System.out.println("Step " + (col + 1));
-			Matrix.printMatrix(tempB);
+			Matrix.printMatrix(tempM);
+		}
+		
+		int row = tempM.getRow() - 1;
+		for(int y = tempM.getCol() - 1; y >= 0; y--, col++, row--) {
+			for(int x = tempM.getRow() - 1; x >= 0; x--) {
+				double rowC = tempM.getValueAt(x, y);
+				if(rowC != 0 && x != y) {
+					tempM.addRowToRow(-rowC, row, x);
+					tempB.addRowToRow(-rowC, row, x);
+				}
+			}
+			System.out.println("===============================================");
+			System.out.println("Step " + (col + 1));
+			Matrix.printMatrix(tempM);
 		}
 		
 		return tempB;
