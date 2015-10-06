@@ -193,6 +193,70 @@ public class Matrix {
 		}
 	}
 	
+	/** Gauss-Jordan Elimination **/
+	public static Matrix getGaussJordan(Matrix m, Matrix b) {
+		Matrix tempM = m.clone();
+		Matrix tempB = b.clone();
+		
+		int col = 0;
+		for(int x = 0; x < m.getRow(); x++, col++) {
+			int swapWith = x;
+			
+			//looking for the first non-zero number in the column
+			for(int i = x; i < m.getRow(); i++) {
+				if(tempM.getValueAt(i, col) != 0) {
+					swapWith = i;
+					break;
+				}
+			}
+			
+			//looking if there is an actual one in the column
+			for(int i = x; i < m.getRow(); i++) {
+				if(tempM.getValueAt(i, col) == 1) {
+					swapWith = i;
+					break;
+				}
+			}
+			
+			//swap rows it better row is found
+			if(swapWith != x) {
+				tempM.swapRow(x, swapWith);
+				tempB.swapRow(swapWith, x);
+			}
+			
+			double rowC = tempM.getValueAt(x, col);
+			if(rowC != 1.0) {
+				tempM.multiplyRow(1/rowC, x);
+				tempB.multiplyRow(1/rowC, x);
+			}
+			
+			for(int y = x + 1; y < m.getRow(); y++) {
+				rowC = tempM.getValueAt(y, col);
+				
+				if(rowC != 0) {
+					tempM.addRowToRow(-rowC, x, y);
+					tempB.addRowToRow(-rowC, x, y);
+				}
+			}
+			
+			System.out.println("===============================================");
+			System.out.println("Step " + (col + 1));
+			Matrix.printMatrix(tempB);
+		}
+		
+		return tempB;
+	}
+	
+	/** Inverse **/
+	public static Matrix getInverse(Matrix m) throws Exception {
+		if(!m.isSquareMatrix())
+			throw new UnequalDimensionsException();
+		
+		Matrix identity = Matrix.getIdentityMatrix(m.getRow());
+		
+		return Matrix.getGaussJordan(m, identity);
+	}
+
 	public Matrix clone() {
 		Matrix ret = new Matrix(this.row, this.col);
 		
