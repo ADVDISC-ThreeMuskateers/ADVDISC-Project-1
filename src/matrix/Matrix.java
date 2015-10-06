@@ -39,11 +39,6 @@ public class Matrix {
 	}
 	
 	/** Basic Matrix rules and stuff **/
-	public boolean isSquareMatrix() {
-		if(col == row)
-			return true;
-		return false;
-	}
 	
 	public boolean isRowMatrix() {
 		if(row == 1)
@@ -55,6 +50,26 @@ public class Matrix {
 		if(col == 1)
 			return true;
 		return false;
+	}
+	
+	public boolean isUpperTriangle() {
+		for(int x = 0; x < this.getRow(); x++) {
+			for(int y = 0; y < this.getRow(); y++) {
+				if(x > y && matrix[x][y] != 0)
+					return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean isLowerTriangle() {
+		for(int x = 0; x < this.getRow(); x++) {
+			for(int y = 0; y < this.getRow(); y++) {
+				if(x < y && matrix[x][y] != 0)
+					return false;
+			}
+		}
+		return true;
 	}
 	
 	public static Matrix getIdentityMatrix(int row) {
@@ -269,16 +284,6 @@ public class Matrix {
 		}
 		
 		return tempB;
-	}
-	
-	/** Inverse **/
-	public static Matrix getInverse(Matrix m) throws Exception {
-		if(!m.isSquareMatrix())
-			throw new UnequalDimensionsException();
-		
-		Matrix identity = Matrix.getIdentityMatrix(m.getRow());
-		
-		return Matrix.getGaussJordan(m, identity);
 	}
 
 	public Matrix clone() {

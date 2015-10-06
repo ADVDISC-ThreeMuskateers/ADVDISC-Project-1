@@ -1,9 +1,10 @@
 import matrix.Matrix;
+import matrix.SquareMatrix;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		Matrix m1 = new Matrix(3, 3);
+		SquareMatrix m1 = new SquareMatrix(3);
 		//Matrix m2 = Matrix.getIdentityMatrix(5);
 		/*
 		for(int x = 0; x < m1.getRow(); x++) {
@@ -28,7 +29,7 @@ public class Driver {
 		//System.out.println("================================================");
 		
 		try {
-			Matrix.printMatrix(Matrix.getInverse(m1));
+			Matrix.printMatrix(m1.getInverse());
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
