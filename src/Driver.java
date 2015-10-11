@@ -1,10 +1,12 @@
 import matrix.Matrix;
 import matrix.SquareMatrix;
 import matrix.Vector;
+import view.MainView;
 
 public class Driver {
 
 	public static void main(String[] args) {
+		new MainView();
 		Vector v = new Vector(3);
 		Vector newCoordinate = new Vector(v.getRow());
 		
