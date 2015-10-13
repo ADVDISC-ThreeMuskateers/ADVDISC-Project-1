@@ -64,6 +64,7 @@ public class MainView extends JFrame {
 		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);	
 		mainFrame.setSize(1000, 700);
 		mainFrame.setVisible(true);
+		
 	}
 	class ItemListener implements ActionListener {
 
@@ -74,13 +75,13 @@ public class MainView extends JFrame {
 
 			if(cb.getSelectedIndex()==0){
 		    	inputsPanel.remove(poly);
-				inputsPanel.add(pal, BorderLayout.LINE_START);
+				inputsPanel.add(pal, BorderLayout.CENTER);
 		    	inputsPanel.repaint();
 		    	inputsPanel.revalidate();
 		    }
 			if(cb.getSelectedIndex()==1){
 				inputsPanel.remove(pal);
-				inputsPanel.add(poly, BorderLayout.LINE_START);
+				inputsPanel.add(poly, BorderLayout.CENTER);
 				inputsPanel.repaint();
 				inputsPanel.revalidate();
 			}
