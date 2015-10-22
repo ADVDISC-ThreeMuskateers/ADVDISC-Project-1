@@ -31,18 +31,20 @@ public class MainView extends JFrame {
 	private static Scene createScene() {
 		Group  root  =  new  Group();
         Axes axes = new Axes(
-	            300, 300,
-	            -8, 8, 1,
-	            -6, 6, 1
+	            600, 600,
+	            -20, 20, 1,
+	            -20, 20, 1
 	    );
 	    
 	    Plot plot = new Plot(
 	            //x -> -x*x/4,// parabola function
 	    		//x -> Math.pow(4*x, 0.5),
 	    		x -> -x*x/4,
+	    		
 	    		-8, 8, 0.1,
 	            axes
 	    );
+	    
 	
 	    StackPane layout = new StackPane(plot);
 	    layout.setPadding(new Insets(20));
