@@ -2,65 +2,24 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.function.Function;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import com.sun.istack.internal.FragmentContentHandler;
-import javafx.application.Platform;
-import com.sun.xml.internal.bind.v2.runtime.output.IndentingUTF8XmlOutput;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
-	private static void initFX(JFXPanel fxPanel) {
-        // This method is invoked on JavaFX thread
-        Scene scene = createScene();
-        fxPanel.setScene(scene);
-    }
-	
-	private static Scene createScene() {
-		Group  root  =  new  Group();
-        Axes axes = new Axes(
-	            600, 600,
-	            -20, 20, 1,
-	            -20, 20, 1
-	    );
-	    
-	    Plot plot = new Plot(
-	            //x -> -x*x/4,// parabola function
-	    		//x -> Math.pow(4*x, 0.5),
-	    		x -> -x*x/4,
-	    		
-	    		-8, 8, 0.1,
-	            axes
-	    );
-	    
-	
-	    StackPane layout = new StackPane(plot);
-	    layout.setPadding(new Insets(20));
-	    layout.setStyle("-fx-background-color: rgb(35, 39, 50);");
-	    Scene  theScene  =  new Scene(layout, Color.rgb(35, 39, 50));
-	    return theScene;
-	}
-
 	private JFrame mainFrame = new JFrame();
 	private JPanel inputsPanel =  new JPanel();
 	private JPanel controlPanel = new JPanel();
 	private JPanel operationPanel = new JPanel();
-	private JFXPanel planePane = new JFXPanel();
+	public CartesianPanel planePane = new CartesianPanel();
 	
 	private JPanel planePanel;
 	
+	private double[] polyPoints;
 	
 	String[] types = {"Points, Lines", "Polygons", "Conics"};
 	String[] conics = {"Cirlce", "Ellipse", "Parabola", "Hyperbola"};
@@ -73,8 +32,13 @@ public class MainView extends JFrame {
 	private GridLayout controlsLayout = new GridLayout(2,1);
 	
 	
-	private PointsAndLines pal = new PointsAndLines(); 
-	private Polygons poly = new Polygons();
+	private PointsAndLinesPanel pal = new PointsAndLinesPanel(planePane); 
+	private PolygonPanel poly = new PolygonPanel(planePane);
+	private ConicsPanel con = new ConicsPanel(planePane);
+	
+	
+
+	
 	public MainView(){
 		
 		ItemListener comboListener = new ItemListener();
@@ -85,12 +49,6 @@ public class MainView extends JFrame {
 		
 		
 		 
-		Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                initFX(planePane);
-            }
-       });
 		
 		
 		
@@ -132,13 +90,22 @@ public class MainView extends JFrame {
 
 			if(cb.getSelectedIndex()==0){
 		    	inputsPanel.remove(poly);
-				inputsPanel.add(pal, BorderLayout.CENTER);
+		    	inputsPanel.remove(con);
+		    	inputsPanel.add(pal, BorderLayout.CENTER);
 		    	inputsPanel.repaint();
 		    	inputsPanel.revalidate();
 		    }
 			if(cb.getSelectedIndex()==1){
 				inputsPanel.remove(pal);
+				inputsPanel.remove(con);
 				inputsPanel.add(poly, BorderLayout.CENTER);
+				inputsPanel.repaint();
+				inputsPanel.revalidate();
+			}
+			if(cb.getSelectedIndex()==2){
+				inputsPanel.remove(pal);
+				inputsPanel.remove(poly);
+				inputsPanel.add(con, BorderLayout.CENTER);
 				inputsPanel.repaint();
 				inputsPanel.revalidate();
 			}
