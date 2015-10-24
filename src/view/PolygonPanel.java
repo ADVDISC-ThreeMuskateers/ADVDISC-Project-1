@@ -84,7 +84,7 @@ public class PolygonPanel extends JPanel {
 			 }
 			 if(e.getSource() == submitButt){
 				 cartesian.clearShapes();
-				 cartesian.addShapes(new Parabola(-10,10,6,true));
+				 //cartesian.addShapes(new Parabola(-10,10,6,true));
 				 Point points[] = new Point[pointTextFields.size()/2];
 				 int x, y;
 				 ArrayList<Point> tempPoints = new ArrayList<Point>();
