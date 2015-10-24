@@ -11,11 +11,11 @@ import shapes.Polygon;
 
 public class PolygonPanel extends JPanel {
 	private JLabel numOfPointsLbl  = new JLabel("Number of Sides:");
-	private JTextField numOfPointsTxtField = new JTextField(5);
+	private NumberTextField numOfPointsTxtField = new NumberTextField(5);
 	private JButton numOfPointsButt = new JButton("OK");
 	private JButton submitButt = new JButton("Submit");
 	
-	private ArrayList<JTextField> pointTextFields =  new ArrayList<>();
+	private ArrayList<NumberTextField> pointTextFields =  new ArrayList<>();
 	private JLabel pointLabel = new JLabel(); 
 	
 	private CartesianPanel cartesian;
@@ -55,8 +55,8 @@ public class PolygonPanel extends JPanel {
 			    int numOfPoints =  Integer.parseInt(numOfPointsTxtField.getText());
 				
 			    for(int i=1;i<=numOfPoints;i++){
-					JTextField tempField1 = new JTextField(6);
-					JTextField tempField2 = new JTextField(6);
+					NumberTextField tempField1 = new NumberTextField(6);
+					NumberTextField tempField2 = new NumberTextField(6);
 	//				tempField1.setMaximumSize(max);
 	//				tempField2.setMaximumSize(max);
 	//				tempField1.setMinimumSize(max);

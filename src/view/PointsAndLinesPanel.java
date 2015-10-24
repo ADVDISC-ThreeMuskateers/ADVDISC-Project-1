@@ -13,12 +13,12 @@ import javafx.scene.control.RadioButton;
 class PointsAndLinesPanel extends JPanel {
 	private JLabel pointX1Lbl = new JLabel("X1:");
 	private JLabel pointY1Lbl = new JLabel("Y1:");
-	private JTextField pointX1Txt = new JTextField(5);
-	private JTextField pointY1Txt = new JTextField(5);
+	private NumberTextField pointX1Txt = new NumberTextField(5);
+	private NumberTextField pointY1Txt = new NumberTextField(5);
 	private JLabel pointX2Lbl = new JLabel("X2:");
 	private JLabel pointY2Lbl = new JLabel("Y2:");
-	private JTextField pointX2Txt = new JTextField(5);
-	private JTextField pointY2Txt = new JTextField(5);
+	private NumberTextField pointX2Txt = new NumberTextField(5);
+	private NumberTextField pointY2Txt = new NumberTextField(5);
 	private SpringLayout layout = new SpringLayout();
 	private JRadioButton pointButt = new JRadioButton("Point");
 	private JRadioButton lineButt = new JRadioButton("Line");

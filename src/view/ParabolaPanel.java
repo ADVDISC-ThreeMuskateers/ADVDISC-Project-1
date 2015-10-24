@@ -17,7 +17,7 @@ public class ParabolaPanel extends JPanel {
 	private JLabel verEquation = new JLabel(vertical);
 	private JLabel horEquation = new JLabel(horizontal);
 	
-	private JTextField pTxt = new JTextField();
+	private NumberTextField pTxt = new NumberTextField();
 	private JLabel pLbl = new JLabel("p:");
 	
 	private JRadioButton horizontalButt = new JRadioButton("Horizontal");

@@ -7,14 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import javax.swing.*;
+
 
 import shapes.Ellipse;
 
@@ -28,9 +22,9 @@ public class EllipsePanel extends JPanel {
 	
 	private JPanel pointsPanel = new JPanel();
 	private JLabel aLbl = new JLabel("a:");
-	private JTextField aTxt = new JTextField();
+	private NumberTextField aTxt = new NumberTextField();
 	private JLabel bLbl = new JLabel("b:");
-	private JTextField bTxt = new JTextField();
+	private NumberTextField bTxt = new NumberTextField();
 	private SpringLayout spring = new SpringLayout();
 	
 	private ButtonGroup orientation = new ButtonGroup();
