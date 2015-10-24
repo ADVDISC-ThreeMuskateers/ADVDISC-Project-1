@@ -85,6 +85,10 @@ public class CartesianPanel extends JPanel {
 	  
 	  for(Shape s: shapes) {
 		  dc.draw(s);
+		  //dc.reflectX(s);
+		  //dc.reflectY(s);
+		  //dc.rotateCtr(s);
+		  //dc.rotateClw(s);
 	  }
 	  
 //	  dc.draw(new Point(1, 2));

@@ -23,6 +23,7 @@ public class MainView extends JFrame {
 	
 	String[] types = {"Points, Lines", "Polygons", "Conics"};
 	String[] conics = {"Cirlce", "Ellipse", "Parabola", "Hyperbola"};
+	
 	private JComboBox typesCombo = new JComboBox(types);
 	private JComboBox ConicsCombo = new JComboBox(conics);
 	
@@ -41,10 +42,12 @@ public class MainView extends JFrame {
 	
 	public MainView(){
 		
-		ItemListener comboListener = new ItemListener();
+		InputItemListener comboListener = new InputItemListener();
 		typesCombo.addActionListener(comboListener);
 		
 		inputsPanel.setLayout(inputLayout);
+		
+		
 		inputsPanel.add(typesCombo, BorderLayout.PAGE_START);
 		
 		
@@ -81,7 +84,7 @@ public class MainView extends JFrame {
 		mainFrame.setVisible(true);
 		
 	}
-	class ItemListener implements ActionListener {
+	class InputItemListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

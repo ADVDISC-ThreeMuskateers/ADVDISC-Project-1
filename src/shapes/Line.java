@@ -38,5 +38,65 @@ public class Line extends Shape {
 		
 		g.draw(vector);
 	}
+	public void reflectX(Graphics2D g){
+		double x = xMin;
+		double y = f.apply(x);
+		
+		double graphX = originX + (x * inc);
+		double graphY = originY + (-y * inc);
+		
+		GeneralPath vector = new GeneralPath();
+		vector.moveTo(graphX, graphY);
+		x += 0.1;
+		
+		while(x < xMax) {
+			y = f.apply(x);
+			
+			graphX = originX + (x * inc);
+			graphY = originY + -1*(-y * inc);
+			
+			vector.lineTo(graphX, graphY);
+			x += 0.1;
+		}
+		
+		g.draw(vector);
+		
+	}
+	public void reflectY(Graphics2D g){
+		double x = xMin;
+		double y = f.apply(x);
+		
+		double graphX = originX + (x * inc);
+		double graphY = originY + (-y * inc);
+		
+		GeneralPath vector = new GeneralPath();
+		vector.moveTo(graphX, graphY);
+		x += 0.1;
+		
+		while(x < xMax) {
+			y = f.apply(x);
+			
+			graphX = originX + -1*(x * inc);
+			graphY = originY + (-y * inc);
+			
+			vector.lineTo(graphX, graphY);
+			x += 0.1;
+		}
+		
+		g.draw(vector);
+	
+	}
+	public void reflect(Graphics2D g){
+	
+	}
+	public void translate(Graphics2D g){
+	
+	}
+	public void rotateClw(Graphics2D g){
+	
+	}
+	public void rotateCtr(Graphics2D g){
+	
+	}
 
 }

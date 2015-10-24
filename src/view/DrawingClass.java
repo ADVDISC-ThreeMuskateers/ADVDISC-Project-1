@@ -19,6 +19,56 @@ public class DrawingClass {
 	public void draw(Shape s) {
 		s.setOffset(originX, originY, inc);
 		s.draw(g);
+		//s.reflectX(g);
+		//s.reflectY(g);
+		//s.reflect(g);
+		//s.rotateCtr(g);
+		//s.rotateClw(g);
+		
+	}public void reflectX(Shape s) {
+		s.setOffset(originX, originY, inc);
+		//s.draw(g);
+		s.reflectX(g);
+		//s.reflectY(g);
+		//s.reflect(g);
+		//s.rotateCtr(g);
+		//s.rotateClw(g);
+		
+	}public void reflectY(Shape s) {
+		s.setOffset(originX, originY, inc);
+		//s.draw(g);
+		//s.reflectX(g);
+		s.reflectY(g);
+		//s.reflect(g);
+		//s.rotateCtr(g);
+		//s.rotateClw(g);
+		
+	}public void reflect(Shape s) {
+		s.setOffset(originX, originY, inc);
+		//s.draw(g);
+		//s.reflectX(g);
+		//s.reflectY(g);
+		s.reflect(g);
+		//s.rotateCtr(g);
+		//s.rotateClw(g);
+		
+	}public void rotateCtr(Shape s) {
+		s.setOffset(originX, originY, inc);
+		//s.draw(g);
+		//s.reflectX(g);
+		//s.reflectY(g);
+		//s.reflect(g);
+		s.rotateCtr(g);
+		//s.rotateClw(g);
+		
+	}public void rotateClw(Shape s) {
+		s.setOffset(originX, originY, inc);
+		//s.draw(g);
+		//s.reflectX(g);
+		//s.reflectY(g);
+		//s.reflect(g);
+		//s.rotateCtr(g);
+		s.rotateClw(g);
 		
 	}
 }

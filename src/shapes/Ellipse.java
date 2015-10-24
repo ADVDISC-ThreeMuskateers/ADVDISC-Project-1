@@ -21,5 +21,24 @@ public class Ellipse extends Conic {
 		
 		
 	}
-
+public void reflectX(Graphics2D g){
+		
+		
+	}
+public void reflectY(Graphics2D g){
+	
+	
+}
+public void reflect(Graphics2D g){
+	
+}
+public void translate(Graphics2D g){
+	
+}
+public void rotateClw(Graphics2D g){
+	
+}
+public void rotateCtr(Graphics2D g){
+	
+}
 }

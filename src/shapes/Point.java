@@ -44,4 +44,39 @@ public class Point extends Shape{
 		g.drawOval(x, y, this.getR(), this.getR());
 		g.fillOval(x, y, r, r);
 	}
+	public void reflectX(Graphics2D g){
+		int x = originX + (this.x * inc) - this.getR()/2;
+		int y = originY + -1*(-this.y * inc) - this.getR()/2;
+		g.drawOval(x, y, this.getR(), this.getR());
+		g.fillOval(x, y, r, r);
+		
+	}
+	public void reflectY(Graphics2D g){
+		int x = originX + -1*(this.x * inc) - this.getR()/2;
+		int y = originY + (-this.y * inc) - this.getR()/2;
+		g.drawOval(x, y, this.getR(), this.getR());
+		g.fillOval(x, y, r, r);
+		
+	}
+	public void reflect(Graphics2D g){
+		int x = originX + -1*(this.x * inc) - this.getR()/2;
+		int y = originY + -1*(-this.y * inc) - this.getR()/2;
+		g.drawOval(x, y, this.getR(), this.getR());
+		g.fillOval(x, y, r, r);
+	}
+	public void translate(Graphics2D g){
+	
+	}
+	public void rotateClw(Graphics2D g){
+		int x = originX + -1*(-this.y * inc) - this.getR()/2;
+		int y = originY + (this.x * inc) - this.getR()/2;
+		g.drawOval(x, y, this.getR(), this.getR());
+		g.fillOval(x, y, r, r);
+	}
+	public void rotateCtr(Graphics2D g){
+		int x = originX + (-this.y * inc) - this.getR()/2;
+		int y = originY + -1*(this.x * inc) - this.getR()/2;
+		g.drawOval(x, y, this.getR(), this.getR());
+		g.fillOval(x, y, r, r);
+	}
 }

@@ -82,5 +82,25 @@ public class Hyperbola extends Conic {
 		asymptotes[0].draw(g);
 		asymptotes[1].draw(g);
 	}
+public void reflectX(Graphics2D g){
+		
+		
+	}
+public void reflectY(Graphics2D g){
+	
+	
+}
+public void reflect(Graphics2D g){
+	
+}
+public void translate(Graphics2D g){
+	
+}
+public void rotateClw(Graphics2D g){
+	
+}
+public void rotateCtr(Graphics2D g){
+	
+}
 
 }
