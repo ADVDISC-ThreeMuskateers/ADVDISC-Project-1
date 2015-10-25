@@ -18,6 +18,11 @@ public abstract class Shape {
 		this.inc = 0;
 	}
 	
+	public abstract Shape reflectX();
+	public abstract Shape reflectY();
+	public abstract Shape reflect();
+	public abstract Shape rotateClw();
+	public abstract Shape rotateCtr();
 	public abstract void draw(Graphics2D g);
 	public abstract void reflectX(Graphics2D g);
 	public abstract void reflectY(Graphics2D g);

@@ -28,8 +28,11 @@ public class PolygonPanel extends JPanel {
 	private Dimension min = new Dimension(5,5);
 	private Dimension max = new Dimension(5,5);
 	
-	public PolygonPanel(CartesianPanel cartesian){
+	private OperationsPanel oper;
+	
+	public PolygonPanel(CartesianPanel cartesian, OperationsPanel oper){
 		this.cartesian = cartesian;
+		this.oper = oper;
 		this.setLayout(new BorderLayout());
 		numOfPointsButt.addActionListener(new Listener());
 		submitButt.addActionListener(new Listener());
@@ -94,7 +97,9 @@ public class PolygonPanel extends JPanel {
 					 tempPoints.add(new Point(x,y));
 				 }
 				 points = tempPoints.toArray(points);
-				 cartesian.addShapes(new Polygon(points));
+				 Polygon polygon = new Polygon(points);
+				 oper.setShape(polygon);
+				 cartesian.addShapes(polygon);
 			 }
 		}
 	} 

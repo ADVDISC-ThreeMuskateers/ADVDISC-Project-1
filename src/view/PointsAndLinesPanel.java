@@ -28,8 +28,9 @@ class PointsAndLinesPanel extends JPanel {
 	private JButton submitButt = new JButton("Submit");
 	private JLabel submitLbl = new JLabel("Submit: ");
 	private CartesianPanel cartesian;
-	public PointsAndLinesPanel(CartesianPanel cartesian){
-		
+	private OperationsPanel oper;
+	public PointsAndLinesPanel(CartesianPanel cartesian, OperationsPanel oper){
+		this.oper = oper;
 		this.cartesian = cartesian;
 		this.setLayout(layout);
 		group.add(pointButt);
@@ -101,15 +102,17 @@ class PointsAndLinesPanel extends JPanel {
 			}
 			if(e.getSource()==submitButt&&pointButt.isSelected()){
 				Point point = new Point(Integer.parseInt(pointX1Txt.getText()), Integer.parseInt(pointY1Txt.getText()));
+				oper.setShape(point);
 				cartesian.clearShapes();
 				cartesian.addShapes(point);
 			}
 			if(e.getSource()==submitButt&&lineButt.isSelected()){
-				
 				Point p1 = new Point(Integer.parseInt(pointX1Txt.getText()), Integer.parseInt(pointY1Txt.getText()));
 				Point p2 = new Point(Integer.parseInt(pointX2Txt.getText()), Integer.parseInt(pointY2Txt.getText()));
+				LineSegment line = new LineSegment(p1,p2);
+				oper.setShape(line);
 				cartesian.clearShapes();
-				cartesian.addShapes(new LineSegment(p1, p2));
+				cartesian.addShapes(line);
 			}
 		}
 	}

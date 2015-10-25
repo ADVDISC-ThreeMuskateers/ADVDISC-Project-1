@@ -14,8 +14,9 @@ public class MainView extends JFrame {
 	private JFrame mainFrame = new JFrame();
 	private JPanel inputsPanel =  new JPanel();
 	private JPanel controlPanel = new JPanel();
-	private JPanel operationPanel = new JPanel();
+	
 	public CartesianPanel planePane = new CartesianPanel();
+	private OperationsPanel operationPanel = new OperationsPanel(planePane);
 	
 	private JPanel planePanel;
 	
@@ -33,9 +34,9 @@ public class MainView extends JFrame {
 	private GridLayout controlsLayout = new GridLayout(2,1);
 	
 	
-	private PointsAndLinesPanel pal = new PointsAndLinesPanel(planePane); 
-	private PolygonPanel poly = new PolygonPanel(planePane);
-	private ConicsPanel con = new ConicsPanel(planePane);
+	private PointsAndLinesPanel pal = new PointsAndLinesPanel(planePane, operationPanel); 
+	private PolygonPanel poly = new PolygonPanel(planePane, operationPanel);
+	private ConicsPanel con = new ConicsPanel(planePane, operationPanel);
 	
 	
 

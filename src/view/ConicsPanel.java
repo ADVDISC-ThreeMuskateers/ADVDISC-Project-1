@@ -15,13 +15,15 @@ public class ConicsPanel extends JPanel {
 //	private HyperbolaPanel hyp;
 	private EllipsePanel ell;
 	private ParabolaPanel par;
-	ConicsPanel(CartesianPanel cartesian){
+	private OperationsPanel oper;
+	ConicsPanel(CartesianPanel cartesian, OperationsPanel oper){
 		this.cartesian = cartesian;
+		this.oper = oper;
 		this.setLayout(borderLayout);
 		this.add(conics, BorderLayout.PAGE_START);
 //		hyp = new HyperbolaPanel();
-		ell = new EllipsePanel(cartesian);
-		par = new ParabolaPanel(cartesian);
+		ell = new EllipsePanel(cartesian, oper);
+		par = new ParabolaPanel(cartesian, oper);
 		con.add(ell, BorderLayout.CENTER);
     	conics.addActionListener(new ItemListener());
     	

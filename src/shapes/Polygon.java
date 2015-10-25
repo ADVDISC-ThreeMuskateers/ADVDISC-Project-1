@@ -102,5 +102,67 @@ public class Polygon extends Shape {
 		
 		g.drawPolygon(x, y, x.length);
 	}
+	public Polygon reflectX(){
+		Point[] points = new Point[corners.size()];
+		ArrayList<Point> tempPoints = new ArrayList<Point>();
+		int x, y;
+		for(Point p: corners){
+		 	 x = originX + (p.getX());
+			 y = originY + -(p.getY());
+			 tempPoints.add(new Point(x,y));
+		 }
+		points = tempPoints.toArray(points);
+		return new Polygon(points);
+	}
+	public Polygon reflectY(){
+		Point[] points = new Point[corners.size()];
+		ArrayList<Point> tempPoints = new ArrayList<Point>();
+		int x, y;
+		for(Point p: corners){
+		 	 x = originX + -1*(p.getX());
+			 y = originY + p.getY();
+			 tempPoints.add(new Point(x,y));
+		 }
+		points = tempPoints.toArray(points);
+		return new Polygon(points);
+	}
+	public Polygon reflect(){
+		Point[] points = new Point[corners.size()];
+		ArrayList<Point> tempPoints = new ArrayList<Point>();
+		int x, y;
+		for(Point p: corners){
+		 	 x = originX + -1*(p.getX());
+			 y = originY + -1*(p.getY());
+			 tempPoints.add(new Point(x,y));
+		 }
+		points = tempPoints.toArray(points);
+		return new Polygon(points);
+	}
+	public Polygon rotateClw(){
+		Point[] points = new Point[corners.size()];
+		ArrayList<Point> tempPoints = new ArrayList<Point>();
+		int x, y;
+		for(Point p: corners){
+		 	 x = originY + (p.getY());
+			 y = originX + -1*(p.getX());
+			 tempPoints.add(new Point(x,y));
+		 }
+		points = tempPoints.toArray(points);
+		return new Polygon(points);
+	}
+	
+		
+	public Polygon rotateCtr(){
+		Point[] points = new Point[corners.size()];
+		ArrayList<Point> tempPoints = new ArrayList<Point>();
+		int x, y;
+		for(Point p: corners){
+		 	 x = originY + -1*(p.getY());
+			 y = originX + (p.getX());
+			 tempPoints.add(new Point(x,y));
+		 }
+		points = tempPoints.toArray(points);
+		return new Polygon(points);
+	}
 
 }

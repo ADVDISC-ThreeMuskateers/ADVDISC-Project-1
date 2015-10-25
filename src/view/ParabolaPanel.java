@@ -31,9 +31,10 @@ public class ParabolaPanel extends JPanel {
 	private SpringLayout spring = new SpringLayout();
 	private CartesianPanel cartesian;
 	
-	
-	ParabolaPanel(CartesianPanel cartesian){
+	private OperationsPanel oper;
+	ParabolaPanel(CartesianPanel cartesian, OperationsPanel oper){
 		this.setLayout(layout);
+		this.oper = oper;
 		
 		this.cartesian = cartesian;
 		
@@ -77,13 +78,17 @@ public class ParabolaPanel extends JPanel {
 			}
 			
 			if(e.getSource()==submit&&verticalButt.isSelected()){
+				Parabola parabola = new Parabola(-10, 10, Integer.parseInt(pTxt.getText()), true);
+				oper.setShape(parabola);
 				cartesian.clearShapes();
-				cartesian.addShapes(new Parabola(-10, 10, Integer.parseInt(pTxt.getText()), true));
+				cartesian.addShapes(parabola);
 			}
 
 			if(e.getSource()==submit&&horizontalButt.isSelected()){
+				Parabola parabola = new Parabola(-10, 10, Integer.parseInt(pTxt.getText()), false);
+				oper.setShape(parabola);
 				cartesian.clearShapes();
-				cartesian.addShapes(new Parabola(-10, 10, Integer.parseInt(pTxt.getText()), false));
+				cartesian.addShapes(parabola);
 			}
 
 		}

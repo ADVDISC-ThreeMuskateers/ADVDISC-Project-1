@@ -1,7 +1,7 @@
 package shapes;
 import java.awt.Graphics2D;
 
-public class Point extends Shape{
+public class Point extends Shape {
 	private int x;
 	private int y;
 	private int r;
@@ -78,5 +78,38 @@ public class Point extends Shape{
 		int y = originY + -1*(this.x * inc) - this.getR()/2;
 		g.drawOval(x, y, this.getR(), this.getR());
 		g.fillOval(x, y, r, r);
+	}
+	@Override
+	public Point reflectX(){
+		int x = originX + (this.x);
+		int y = originY + (-this.y);
+		
+		return new Point(x, y);
+		
+	}
+	public Point reflectY(){
+		int x = originX + -1*(this.x);
+		int y = originY + (this.y);
+		
+		return new Point(x, y);		
+	}
+	public Point reflect(){
+		int x = originX + -1*(this.x);
+		int y = originY + -1*(this.y);
+		
+		return new Point(x, y);
+	}
+
+	public Point rotateClw(){
+		int x = originY + (this.y);
+		int y = originX + -1*(this.x);
+		
+		return new Point(x, y);
+	}
+	public Point rotateCtr(){
+		int x = originY + (-this.y);
+		int y = originX + (this.x);
+		
+		return new Point(x, y);
 	}
 }

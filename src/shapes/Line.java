@@ -99,4 +99,34 @@ public class Line extends Shape {
 	
 	}
 
+	@Override
+	public Shape reflectX() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Shape reflectY() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Shape reflect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Shape rotateClw() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Shape rotateCtr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

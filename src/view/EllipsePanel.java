@@ -36,9 +36,10 @@ public class EllipsePanel extends JPanel {
 	private BorderLayout layout = new BorderLayout();
 	
 	private EllipsePanel ell = this;
-	EllipsePanel(CartesianPanel cartesian){
+	private OperationsPanel oper;
+	EllipsePanel(CartesianPanel cartesian, OperationsPanel oper){
 		this.cartesian = cartesian;
-		
+		this.oper = oper;
 		
 		
 		submit.addActionListener(new ItemListener());
@@ -95,8 +96,10 @@ public class EllipsePanel extends JPanel {
 //				cartesian.addShapes(new Ellipse(-10, 10, Integer.parseInt(aTxt.getText()), Integer.parseInt(bTxt.getText())));
 //			}
 			if(e.getSource()==submit){
+				Ellipse ellipse = new Ellipse(-10, 10, Integer.parseInt(aTxt.getText()), Integer.parseInt(bTxt.getText()));
+				oper.setShape(ellipse);
 				cartesian.clearShapes();
-				cartesian.addShapes(new Ellipse(-10, 10, Integer.parseInt(aTxt.getText()), Integer.parseInt(bTxt.getText())));
+				cartesian.addShapes(ellipse);
 			}
 
 		}
