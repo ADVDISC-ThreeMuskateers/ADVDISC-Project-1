@@ -40,12 +40,12 @@ public class OperationsPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if(submit == e.getSource()){
-				if(submit.getText().equals("Refelct X")){
+				if(submit.getText().equals("Reflect X")){
 					System.out.println("SHAPE IS A: " + shape.getClass());
 					cartesian.clearShapes();
 					cartesian.addShapes(shape.reflectX());
 				}
-				if(submit.getText().equals("Refelct Y")){
+				if(submit.getText().equals("Reflect Y")){
 					cartesian.clearShapes();
 					cartesian.addShapes(shape.reflectY());		
 				}
@@ -76,13 +76,13 @@ public class OperationsPanel extends JPanel {
 
 			if(cb.getSelectedIndex()==0){
 				submit.setEnabled(true);
-				submit.setText("Refelct X");
+				submit.setText("Reflect X");
 				oper.repaint();
 				oper.revalidate();
 		    }
 			if(cb.getSelectedIndex()==1){
 				submit.setEnabled(true);
-				submit.setText("Refelct Y");
+				submit.setText("Reflect Y");
 				oper.repaint();
 				oper.revalidate();
 		    }

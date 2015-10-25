@@ -104,7 +104,8 @@ class PointsAndLinesPanel extends JPanel {
 				Point point = new Point(Integer.parseInt(pointX1Txt.getText()), Integer.parseInt(pointY1Txt.getText()));
 				oper.setShape(point);
 				cartesian.clearShapes();
-				cartesian.addShapes(point);
+				Shape shape = point;
+				cartesian.addShapes(shape);
 			}
 			if(e.getSource()==submitButt&&lineButt.isSelected()){
 				Point p1 = new Point(Integer.parseInt(pointX1Txt.getText()), Integer.parseInt(pointY1Txt.getText()));
