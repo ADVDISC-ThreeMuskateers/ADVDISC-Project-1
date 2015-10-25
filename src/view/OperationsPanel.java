@@ -8,8 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-import shapes.Point;
-import shapes.Shape;
+import shapes.*;
 
 public class OperationsPanel extends JPanel {
 	String[] operations = {"Reflect X", "Reflect Y", "Translate", "Rotate Clockwise","Rotate Counter-Clockwise",};
@@ -43,6 +42,7 @@ public class OperationsPanel extends JPanel {
 				if(submit.getText().equals("Reflect X")){
 					System.out.println("SHAPE IS A: " + shape.getClass());
 					cartesian.clearShapes();
+					shape.reflectX();
 					cartesian.addShapes(shape.reflectX());
 				}
 				if(submit.getText().equals("Reflect Y")){

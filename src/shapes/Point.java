@@ -81,16 +81,16 @@ public class Point extends Shape {
 	}
 	@Override
 	public Point reflectX(){
-		int x = originX + (this.x);
-		int y = originY + (-this.y);
-		
+		int x = (this.x);
+		int y = (-this.y);
+		System.out.println("REFLECTX: " + x + "   " + y);
 		return new Point(x, y);
 		
 	}
 	public Point reflectY(){
 		int x = originX + -1*(this.x);
 		int y = originY + (this.y);
-		
+		System.out.println("REFLECTY: " + x + "   " + y);
 		return new Point(x, y);		
 	}
 	public Point reflect(){

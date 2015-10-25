@@ -17,7 +17,6 @@ public abstract class Shape {
 		this.originY = 0;
 		this.inc = 0;
 	}
-	
 	public abstract Shape reflectX();
 	public abstract Shape reflectY();
 	public abstract Shape reflect();

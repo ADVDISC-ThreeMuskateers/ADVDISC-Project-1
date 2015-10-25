@@ -46,8 +46,8 @@ public class Hyperbola extends Conic {
 				x += 0.1;
 			}
 			
-			asymptotes[0] = new Line((a + 0.0) / b, 0, xMin, xMax);
-			asymptotes[1] = new Line(-(a + 0.0)/b, 0, xMin, xMax);
+			asymptotes[0] = new Line((a + 0) / b, 0, xMin, xMax);
+			asymptotes[1] = new Line(-(a + 0)/b, 0, xMin, xMax);
 		} else {
 			double y = xMin;
 			double x = f.apply(y);
@@ -73,8 +73,8 @@ public class Hyperbola extends Conic {
 				
 			}
 			
-			asymptotes[0] = new Line((b + 0.0) / a, 0, xMin, xMax);
-			asymptotes[1] = new Line(-(b + 0.0)/a, 0, xMin, xMax);
+			asymptotes[0] = new Line((b + 0) / a, 0, xMin, xMax);
+			asymptotes[1] = new Line(-(b + 0)/a, 0, xMin, xMax);
 		}
 
 		g.draw(negPath);

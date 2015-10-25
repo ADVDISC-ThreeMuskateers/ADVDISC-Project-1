@@ -109,8 +109,9 @@ public class CartesianPanel extends JPanel {
 	 }
 	 
 	 public void addShapes(Shape s) {
-		 this.shapes.add(s);
+		 System.out.println("IS SHAPE ADDED: "+ this.shapes.add(s));
 		 this.repaint();
+		 
 	 }
 	 
 	 public void clearShapes() {

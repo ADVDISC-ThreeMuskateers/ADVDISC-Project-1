@@ -12,7 +12,7 @@ public class ConicsPanel extends JPanel {
 	private JComboBox conics = new JComboBox(conicsStrings);
 	private BorderLayout borderLayout = new BorderLayout();
 	private ConicsPanel con = this;
-//	private HyperbolaPanel hyp;
+	private HyperbolaPanel hyp;
 	private EllipsePanel ell;
 	private ParabolaPanel par;
 	private OperationsPanel oper;
@@ -21,7 +21,7 @@ public class ConicsPanel extends JPanel {
 		this.oper = oper;
 		this.setLayout(borderLayout);
 		this.add(conics, BorderLayout.PAGE_START);
-//		hyp = new HyperbolaPanel();
+		hyp = new HyperbolaPanel(cartesian, oper);
 		ell = new EllipsePanel(cartesian, oper);
 		par = new ParabolaPanel(cartesian, oper);
 		con.add(ell, BorderLayout.CENTER);
@@ -36,8 +36,8 @@ public class ConicsPanel extends JPanel {
 		    JComboBox cb = (JComboBox) e.getSource();
 
 			if(cb.getSelectedIndex()==0){
-				//cartesian.addShapes(new shapes.Point(2, 2));
-//				con.remove(hyp);
+				cartesian.addShapes(new shapes.Point(2, 2));
+				con.remove(hyp);
 				con.remove(par);
 				con.add(ell, BorderLayout.CENTER);
 		    	con.repaint();
@@ -46,13 +46,13 @@ public class ConicsPanel extends JPanel {
 			if(cb.getSelectedIndex()==1){
 				con.remove(ell);
 				con.remove(par);
-//				con.add(hyp, BorderLayout.CENTER);
+				con.add(hyp, BorderLayout.CENTER);
 				con.repaint();
 				con.revalidate();
 			}
 			if(cb.getSelectedIndex()==2){
 				con.remove(ell);
-//				con.remove(hyp);
+				con.remove(hyp);
 				con.add(par, BorderLayout.CENTER);
 				con.repaint();
 				con.revalidate();
