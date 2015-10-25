@@ -4,9 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SpringLayout;
 
-import shapes.Ellipse;
 import shapes.Parabola;
 
 public class ParabolaPanel extends JPanel {

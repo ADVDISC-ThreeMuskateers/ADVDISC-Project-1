@@ -1,19 +1,45 @@
 package shapes;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
+import java.util.ArrayList;
+
+import matrix.Matrix;
 
 public class Hyperbola extends Conic {
-	private int a, b;
+	private int a, b, h, k;
 	private Line[] asymptotes;
 	
 	public Hyperbola(int a, int b, int xMin, int xMax, boolean isVertical) {
 		super(xMin, xMax, isVertical);
 		this.a = a;
 		this.b = b;
-		f = x -> Math.sqrt((1 + Math.pow(x, 2)/Math.pow(b, 2)) * Math.pow(a, 2));
+		this.h = 0;
+		this.k = 0;
 		
+		if(isVertical) {
+			f = x -> Math.sqrt((1 + Math.pow(x - h, 2)/Math.pow(b, 2)) * Math.pow(a, 2)) + k;
+		} else {
+			f = x -> Math.sqrt((1 + Math.pow(x - k, 2)/Math.pow(b, 2)) * Math.pow(a, 2)) + h;
+		}
+		
+		asymptotes = new Line[2];
+		
+	}
+	
+	public Hyperbola(int a, int b, int h, int k, int xMin, int xMax, boolean isVertical) {
+		super(xMin, xMax, isVertical);
+		
+		this.a = a;
+		this.b = b;
+		this.h = h;
+		this.k = k;
+		
+		if(isVertical) {
+			f = x -> Math.sqrt((1 + Math.pow(x - h, 2)/Math.pow(b, 2)) * Math.pow(a, 2)) + k;
+		} else {
+			f = x -> Math.sqrt((1 + Math.pow(x - k, 2)/Math.pow(b, 2)) * Math.pow(a, 2)) + h;
+		}		
 		asymptotes = new Line[2];
 	}
 	
@@ -32,7 +58,7 @@ public class Hyperbola extends Conic {
 			path.moveTo(graphX, graphY);
 			negPath.moveTo(graphX, negGraphY);
 			
-			x += 0.1;
+			x += 1;
 			
 			while(x < xMax) {
 				y = f.apply(x);
@@ -43,7 +69,7 @@ public class Hyperbola extends Conic {
 				
 				path.lineTo(graphX, graphY);
 				negPath.lineTo(graphX, negGraphY);
-				x += 0.1;
+				x += 1;
 			}
 			
 			asymptotes[0] = new Line((a + 0) / b, 0, xMin, xMax);
@@ -82,55 +108,45 @@ public class Hyperbola extends Conic {
 		asymptotes[0].draw(g);
 		asymptotes[1].draw(g);
 	}
-public void reflectX(Graphics2D g){
-		
-		
+	
+	@Override
+	public Shape reflectX() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-public void reflectY(Graphics2D g){
 	
+	@Override
+	public Shape reflectY() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void reflect(Graphics2D g){
+	@Override
+	public Shape reflect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void translate(Graphics2D g){
+	@Override
+	public Shape rotateClw() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void rotateClw(Graphics2D g){
+	@Override
+	public Shape rotateCtr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void rotateCtr(Graphics2D g){
-	
-}
-
-@Override
-public Shape reflectX() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape reflectY() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape reflect() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape rotateClw() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape rotateCtr() {
-	// TODO Auto-generated method stub
-	return null;
-}
+	@Override
+	public Matrix toMatrix() {
+		Matrix matrix = new Matrix(2, 1);
+		
+		matrix.setValueAt(0, 0, a);
+		matrix.setValueAt(1, 0, b);
+		
+		return matrix;
+	}
 
 }

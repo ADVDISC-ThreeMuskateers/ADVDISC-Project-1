@@ -3,6 +3,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.util.function.Function;
 
+import matrix.Matrix;
+
 public class Line extends Shape {
 	private Function<Double, Double> f;
 	private int xMin, xMax;
@@ -24,7 +26,7 @@ public class Line extends Shape {
 		
 		GeneralPath vector = new GeneralPath();
 		vector.moveTo(graphX, graphY);
-		x += 0.1;
+		x += 1.0;
 		
 		while(x < xMax) {
 			y = f.apply(x);
@@ -125,6 +127,12 @@ public class Line extends Shape {
 
 	@Override
 	public Shape rotateCtr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Matrix toMatrix() {
 		// TODO Auto-generated method stub
 		return null;
 	}

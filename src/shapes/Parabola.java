@@ -3,12 +3,19 @@ package shapes;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 
+import matrix.Matrix;
+
 public class Parabola extends Conic {	
+	private double p;
+	private int h, k;
 	
 	public Parabola(int xMin, int xMax, double p, boolean isVertical) {
 		super(xMin, xMax, isVertical);
 		this.xMin = xMin;
 		this.xMax = xMax;
+		this.h = 0;
+		this.k = 0;
+		this.p = p;
 		this.isVertical = isVertical;
 		/*** 	Vertical Parabolas follow the equation:
 		 * 		(y - h)^2 = 4px;
@@ -17,7 +24,32 @@ public class Parabola extends Conic {
 		 * 		(x - k)^2 = 4py;
 		 * 		y = x^2 / 4p
 		 ***/
-		f = x -> Math.pow(x, 2) / (4 * p);
+		
+		f = x -> Math.pow(x - k, 2) / (4 * p) + h;
+		
+	}
+	
+	public Parabola(int xMin, int xMax, double p, int h, int k, boolean isVertical) {
+		super(xMin, xMax, isVertical);
+		this.xMin = xMin;
+		this.xMax = xMax;
+		this.h = h;
+		this.k = k;
+		this.p = p;
+		this.isVertical = isVertical;
+		/*** 	Vertical Parabolas follow the equation:
+		 * 		(y - h)^2 = 4px;
+		 * 		x = (y - h)^2 / 4p
+		 * 		Horizontal Parabolas follow the equation:
+		 * 		(x - k)^2 = 4py;
+		 * 		y = x^2 / 4p
+		 ***/
+		
+		if(isVertical) {
+			f = x -> Math.pow(x - k, 2) / (4 * p) + h;
+		} else {
+			f = x -> Math.pow(x - h, 2) / (4 * p) + k;
+		}
 		
 	}
 	
@@ -34,7 +66,7 @@ public class Parabola extends Conic {
 			double graphY = originY + (-y * inc);
 			
 			vector.moveTo(graphX, graphY);
-			x += 0.1;
+			x += 1;
 			
 			while(x < xMax) {
 				y = f.apply(x);
@@ -43,7 +75,7 @@ public class Parabola extends Conic {
 				graphY = originY + (-y * inc);
 				
 				vector.lineTo(graphX, graphY);
-				x += 0.1;
+				x += 1;
 			}
 		} else {
 			double y = xMin;
@@ -69,55 +101,41 @@ public class Parabola extends Conic {
 
 		g.draw(vector);
 	}
-public void reflectX(Graphics2D g){
-		
-		
+
+	@Override
+	public Shape reflectX() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-public void reflectY(Graphics2D g){
 	
+	@Override
+	public Shape reflectY() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void reflect(Graphics2D g){
+	@Override
+	public Shape reflect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void translate(Graphics2D g){
+	@Override
+	public Shape rotateClw() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void rotateClw(Graphics2D g){
+	@Override
+	public Shape rotateCtr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-}
-public void rotateCtr(Graphics2D g){
-	
-}
-
-@Override
-public Shape reflectX() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape reflectY() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape reflect() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape rotateClw() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public Shape rotateCtr() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
+	@Override
+	public Matrix toMatrix() {
+		Matrix matrix = new Matrix(1, 1);
+		
+		return matrix;
+	}
 }

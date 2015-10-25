@@ -1,14 +1,18 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import shapes.*;
-import javax.swing.*;
-import javax.swing.border.Border;
 
-import javafx.scene.control.RadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SpringLayout;
+
+import shapes.LineSegment;
+import shapes.Point;
 
 class PointsAndLinesPanel extends JPanel {
 	private JLabel pointX1Lbl = new JLabel("X1:");

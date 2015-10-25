@@ -1,6 +1,8 @@
-package shapes;
+ package shapes;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+
+import matrix.Matrix;
 
 public class Polygon extends Shape {
 	private ArrayList<Point> corners;
@@ -31,77 +33,6 @@ public class Polygon extends Shape {
 		
 	}
 	
-	public void reflectX(Graphics2D g){
-		int[] x = new int[corners.size()];
-		int[] y = new int[corners.size()];
-		
-		int ctr = 0;
-		for(Point p: corners) {
-			x[ctr] = originX + (p.getX() * inc);
-			y[ctr] = originY + -1*(-p.getY() * inc);
-			ctr++;
-		}
-		
-		g.drawPolygon(x, y, x.length);
-	}
-	public void reflectY(Graphics2D g){
-		int[] x = new int[corners.size()];
-		int[] y = new int[corners.size()];
-		
-		int ctr = 0;
-		for(Point p: corners) {
-			x[ctr] = originX + -1*(p.getX() * inc);
-			y[ctr] = originY + (-p.getY() * inc);
-			ctr++;
-		}
-		
-		g.drawPolygon(x, y, x.length);
-	}
-	public void reflect(Graphics2D g){
-		int[] x = new int[corners.size()];
-		int[] y = new int[corners.size()];
-		
-		int ctr = 0;
-		for(Point p: corners) {
-			x[ctr] = originX + -1*(p.getX() * inc);
-			y[ctr] = originY + -1*(-p.getY() * inc);
-			ctr++;
-		}
-	
-		
-		g.drawPolygon(x, y, x.length);
-	}
-	public void translate(Graphics2D g){
-	
-	}
-	public void rotateClw(Graphics2D g){
-		int[] x = new int[corners.size()];
-		int[] y = new int[corners.size()];
-		
-		int ctr = 0;
-		for(Point p: corners) {
-			x[ctr] = originY + -1*(-p.getY() * inc);
-			y[ctr] = originX + (p.getX() * inc);
-			ctr++;
-		}
-	
-		
-		g.drawPolygon(x, y, x.length);
-	}
-	public void rotateCtr(Graphics2D g){
-		int[] x = new int[corners.size()];
-		int[] y = new int[corners.size()];
-		
-		int ctr = 0;
-		for(Point p: corners) {
-			x[ctr] = originY + (-p.getY() * inc);
-			y[ctr] = originX + -1*(p.getX() * inc);
-			ctr++;
-		}
-	
-		
-		g.drawPolygon(x, y, x.length);
-	}
 	public Polygon reflectX(){
 		Point[] points = new Point[corners.size()];
 		ArrayList<Point> tempPoints = new ArrayList<Point>();
@@ -163,6 +94,20 @@ public class Polygon extends Shape {
 		 }
 		points = tempPoints.toArray(points);
 		return new Polygon(points);
+	}
+
+	@Override
+	public Matrix toMatrix() {
+		Matrix matrix = new Matrix(2, this.corners.size());
+		
+		for(int i = 0; i < this.corners.size(); i++) {
+			Point p = this.corners.get(i);
+			
+			matrix.setValueAt(0, i, p.getX());
+			matrix.setValueAt(1, i, p.getY());
+		}
+		
+		return matrix;
 	}
 
 }
